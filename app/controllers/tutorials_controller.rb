@@ -1,4 +1,7 @@
 class TutorialsController < ApplicationController
+  
+  before_action :authorize, only: [:new, :create]
+
   def index
     @tutorials = Tutorial.all
   end
