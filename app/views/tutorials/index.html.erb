@@ -1,0 +1,9 @@
+<h1>Tuts-an-Common</h1>
+<h2><%= link_to "Submit Tutorial", new_tutorial_path %></h2>
+
+<% @tutorials.each do |tutorial| %>
+  <li>
+    <a href=<%= tutorial.link %>><%= tutorial.description %></a>
+    <!-- <%= tutorial.link %> -->
+  </li>
+<% end %>
