@@ -5,5 +5,7 @@
   <%= f.text_field :description %>
   <%= f.label 'URL' %>
   <%= f.text_field :link %>
-  <%= f.submit %>
+  <%= f.label 'Category' %>
+  <%= f.select(:category_id, Category.all.collect {|category| [ category.name, category.id ] }) %>
+  <%= f.submit 'Submit Tutorial' %>
 <% end %>

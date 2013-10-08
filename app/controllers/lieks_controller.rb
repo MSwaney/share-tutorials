@@ -1,0 +1,2 @@
+class LieksController < ApplicationController
+end

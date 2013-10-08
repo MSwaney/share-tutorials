@@ -11,13 +11,18 @@ class TutorialsController < ApplicationController
   end
 
   def create
-    Tutorial.create(tutorial_params)
-    redirect_to '/'
+    @tutorial = current_user.tutorials.new(tutorial_params)
+    if @tutorial.save
+      flash[:notice] = "Good job"
+      redirect_to '/'
+    else
+      render 'new'
+    end
   end
 
 private
   
   def tutorial_params
-    params.require(:tutorial).permit(:description, :link)
+    params.require(:tutorial).permit(:description, :link, :category_id, :user_id)
   end
 end

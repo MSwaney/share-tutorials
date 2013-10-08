@@ -1,9 +1,23 @@
-<h1>Tuts-an-Common</h1>
-<h2><%= link_to "Submit Tutorial", new_tutorial_path %></h2>
 
-<% @tutorials.each do |tutorial| %>
-  <li>
-    <a href=<%= tutorial.link %>><%= tutorial.description %></a>
-    <!-- <%= tutorial.link %> -->
-  </li>
-<% end %>
+    <div class="large-3 columns left">
+      <h5>Share Yours!</h5>
+      <p>Why not share your favorite tutorials with the class?</p>
+      <p><%= link_to "Submit Tutorial", new_tutorial_path, class: "button small radius" %></p>
+  </div>
+
+  <div class="large-9 columns left">
+    <h5>Latest Tutorials</h5>
+    <% @tutorials.each do |tutorial| %>
+      <li>
+        (<%= tutorial.category.name %>) <a href=<%= tutorial.link %> target="_blank"><%= tutorial.description %></a> <%= tutorial.likes.count %>
+        <% if tutorial.liked_by %>
+          <p class='like'>Liked</p>
+        <% else %>
+          <p class="like"><%= button_to("Like", :action => "create", :controller => "likes", like: { :tutorial_id => tutorial.id } ) %></p> 
+        <% end %>
+        <p class="poster">Posted by <%= tutorial.user.name %>
+        <hr>
+      </li>
+    <% end %>
+  </div>
+

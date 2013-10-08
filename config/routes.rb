@@ -5,6 +5,7 @@ Tic::Application.routes.draw do
 
   resources :sessions
   resources :users
+  resources :likes
 
   root to: "tutorials#index"
   resources :tutorials
