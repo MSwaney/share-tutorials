@@ -1,9 +1,8 @@
-
 <% title "#{@category.name} Tutorials" %>
 
 <div class="large-3 large-offest-1 columns right sidebar">
    <h6>About This App</h6>
-  <p>A central place for students of Epidocuds to share and comment on programming tutorials!</p>
+  <p>A central place for students of Epicodus to share and comment on programming tutorials!</p>
   <hr>
   <p class='credit'><span class='brought'>Brought to you by:</span> <br> Matt Swaney & Mac Eisenberg</p>
   <hr>
@@ -11,28 +10,36 @@
   <h6>Share the Knowledge</h6>
   <p>Why not share your favorite tutorials with the class?</p>
   <p class='submit'><%= link_to "Submit A Tutorial!", new_tutorial_path, class: "submit-button button small success radius" %></p>
-
- 
 </div>
 
 <div class="large-9 columns left">
-
 <h5>Latest <%= @category.name %> Tutorials</h5>
-
 <% @category.tutorials.each do |tutorial| %>
   <li class='post'>
     <span class='like-count'><%= pluralize(tutorial.likes.count, 'like')%></span>  <span class='post-name'><a href=<%= tutorial.link %> target="_blank"><%= tutorial.description %></a></span>
    
     <span class="poster">Posted by <%= tutorial.user.name %> <%= time_ago_in_words(tutorial.created_at)  %> ago</span>
-    <% if current_user %>
-      <% if tutorial.liked_by(current_user) %>
-        <span class='like'>Liked</span>
+    <div class='info'>
+      <% if current_user %>
+        
+        <% if tutorial.liked_by(current_user) %>
+          <span class='like'>Liked</span>
+        
+        <% else %>
+          <span class='like'><%= link_to("Like It!", likes_path(like: { :tutorial_id => tutorial.id }), :method => 'post') %></span>
+        <% end %>
+      
       <% else %>
-        <span class='like'><%= link_to("Like It!", likes_path(like: { :tutorial_id => tutorial.id }), :method => 'post') %> </span>
+        <span class='like'><%= link_to("Like It!", login_path, notice: "You must be logged in to 'Like'" ) %></span>  
       <% end %>
-    <% else %>
-      <span class='like'><%= link_to("Like It!", login_path, notice: "You must be logged in to 'Like'" ) %></span>  
-    <% end %>
+      
+      <span class='comment-count'>• 
+        <% if tutorial.comments.count > 0 %>
+          <%= link_to(pluralize(tutorial.comments.count, "comment"), tutorial_path(tutorial.id)) %>
+        <% else %>
+          <%= link_to "Leave the first comment!", tutorial_path(tutorial.id) %>
+        <% end %></span>
+    </div>
     <hr>
   </li>
 <% end %>

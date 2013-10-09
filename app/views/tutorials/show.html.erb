@@ -14,12 +14,4 @@
       <%= f.submit "Add Comment" %>
     <% end %>
   <% end %>
-
-  <ul>
-    <% @comments.each do |comment| %>
-      <%= comment.content %>
-      <span class="poster">Posted by <%= comment.user.name %> <%= time_ago_in_words(comment.created_at)  %> ago</span>
-      <hr>
-    <% end %>
-  </ul>
 </div>

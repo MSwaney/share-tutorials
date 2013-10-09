@@ -1,7 +1,7 @@
 class Tutorial < ActiveRecord::Base
   validates :category, presence: true
   validates :link, presence: true
-  validates :description, presence: true, length: {maximum: 50}
+  validates :description, presence: true, length: {maximum: 75}
   has_many :likes
   has_many :comments
   belongs_to :category
