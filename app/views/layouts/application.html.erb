@@ -23,16 +23,22 @@
 
   <body>
     <nav class="top-bar">
+      <section class="top-bar-section">
       <ul class="title-area">
         <li class="name">
-          <h1><%= link_to "Tuts in Common", root_path %></a></h1>
+          <h1><%= link_to "<span class='coding'>Coding</span>.<span class='tutorials'>tutorials</span>".html_safe, root_path %></a></h1>
         </li>
       </ul>
-      <section class="top-bar-section">
+        <ul class="left">
+          <% categories.each do |category| %>
+            <li class="divider"></li>
+            <li class="<%= 'active' if current_page?(category_path(category.slug)) %>"><%= link_to category.name, category_path(category.slug) %></li>
+          <% end %>
+        </ul>
         <ul class="right">
           <% if current_user %>
             <li class="divider"></li>
-            <li>Logged in as <%= current_user.name %>.</li>
+            <li class='welcome'>Logged in as <%= current_user.name %></li>
             <li class="divider"></li>
             <li><%= link_to "Log Out", logout_path %></li>
             <li class="divider"></li>
@@ -45,13 +51,15 @@
       </div>
     </nav>
 
-  <%= flash[:notice] %>
-  <%= flash[:alert] %>
-  <div class="row">
-    <%= yield %>
-  </div>
+    <% if flash[:alert] %>
+      <div class='alert-box'> <%= flash[:alert] %> </div>
+    <% end %>
+
+    <div class="row">
+     <%= yield %>
+    </div>
   
-  <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application" %>
   </body>
 </html>
 

@@ -1,0 +1,26 @@
+
+  <div class="large-3 columns left">
+    <h6>Share the Knowledge</h6>
+    <p>Why not share your favorite tutorials with the class?</p>
+    <p><%= link_to "Submit A Tutorial!", new_tutorial_path, class: "button small secondary radius" %></p>
+</div>
+
+<div class="large-9 columns left">
+  <h5>Latest <%= @category.name %> Tutorials</h5>
+  <% @category.tutorials.each do |tutorial| %>
+    <li>
+    <span class='post'><a href=<%= tutorial.link %> target="_blank"><%= tutorial.description %></a></span> <%= tutorial.likes.count %>
+      <% if current_user %>
+        <% if tutorial.liked_by(current_user) %>
+          <p class='like'>Liked</p>
+        <% else %>
+          <p class="like"><%= button_to("Like", :action => "create", :controller => "likes", like: { :tutorial_id => tutorial.id } ) %></p> 
+        <% end %>
+      <% else %>
+        <p class="like"><%= link_to("Like", login_path, notice: "You must be logged in to 'Like'" ) %></p>  
+      <% end %>
+      <p class="poster">Posted by <%= tutorial.user.name %> <%= time_ago_in_words(tutorial.created_at)  %>
+      <hr>
+    </li>
+  <% end %>
+</div>

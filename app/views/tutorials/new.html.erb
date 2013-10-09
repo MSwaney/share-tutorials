@@ -1,11 +1,23 @@
-<h1>Create New Tutorial</h1>
+<div class='large-5 columns'>
 
-<%= form_for @tutorial do |f| %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.label 'URL' %>
-  <%= f.text_field :link %>
-  <%= f.label 'Category' %>
-  <%= f.select(:category_id, Category.all.collect {|category| [ category.name, category.id ] }) %>
-  <%= f.submit 'Submit Tutorial' %>
-<% end %>
+  <h2>Submit Tutorial</h2>
+
+  <%= form_for @tutorial do |f| %>
+    <% if @tutorial.errors.any? %>
+      <div class="error_messages">
+        <ul>
+          <% @tutorial.errors.full_messages.each do |message| %>
+            <div class='alert-box'><%= message %></div>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <%= f.label 'URL' %>
+    <%= f.text_field :link %>
+    <%= f.label 'Category' %>
+    <%= f.select(:category_id, Category.all.collect {|category| [ category.name, category.id ] }) %>
+    <%= f.submit 'Submit Tutorial' %>
+  <% end %>
+</div>  

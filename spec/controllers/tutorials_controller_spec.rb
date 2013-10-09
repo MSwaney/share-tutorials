@@ -1,5 +1,5 @@
-require 'spec_helper'
+# require 'spec_helper'
 
-describe TutorialsController do
+# describe TutorialsController do
 
-end
+# end

@@ -16,8 +16,11 @@ class Tutorial < ActiveRecord::Base
      self.comments.order("created_at DESC")
    end
 
-  def liked_by
-    Like.find_by(user_id: user.id, tutorial_id: tutorial.id).exist?
+  def liked_by(user)
+    Like.where(user_id: user.id, tutorial_id: self.id).count > 0
   end  
      
+  def self.sort_order
+    Tutorial.all.order('created_at DESC')
+  end 
 end

@@ -7,9 +7,94 @@ li {
 }
 
 .poster {
-  text-align: right;
+  float: right;
+  vertical-align: bottom;
+  margin-bottom: 0px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #858585;
+  margin-top: 25px;
 }
 
 h5 {
   margin-top: 20px;
 }
+
+h6 {
+  margin-top: 15px;
+  margin-bottom: 4px;
+}
+
+hr {
+  margin-top: 0px;
+  margin-bottom: 9px;
+  border-color: #C9C9C9;
+}
+
+body {
+  background-color: #EFE1D1;
+}
+
+.top-bar-section ul {
+  background: none;
+}
+
+p {
+  margin-bottom: 8px;
+}
+
+.active {
+  background-color: #222222;
+
+}
+
+.welcome {
+  color: white;
+  font-size: 13px;
+  margin-top: 12px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.coding {
+  color: #14FFFF;
+  font-style: italic;
+}
+
+.tutorials {
+  color: orange;
+}
+
+.post-name a {
+  font-size: 18px;
+  color: #0077cc;
+  font-weight: bold;
+}
+
+.post {
+  margin-top: 5px; 
+}
+
+.like {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #858585;
+  display: block;
+}
+
+.like-count {
+  padding: 3px 3px 3px 3px;
+  background-color: #7A2929;
+  font-size: 14px;
+  color: #EFE1D1;
+  font-weight: bold;
+}
+
+
+
+
+
+
+

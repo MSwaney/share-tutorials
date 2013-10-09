@@ -3,10 +3,11 @@ Tic::Application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
+  root to: "tutorials#index"
+  
+  resources :tutorials
   resources :sessions
   resources :users
   resources :likes
-
-  root to: "tutorials#index"
-  resources :tutorials
+  resources :categories
 end

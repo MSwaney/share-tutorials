@@ -3,7 +3,7 @@ class TutorialsController < ApplicationController
   before_action :authorize, only: [:new, :create]
 
   def index
-    @tutorials = Tutorial.all
+    @tutorials = Tutorial.sort_order
   end
 
   def new
