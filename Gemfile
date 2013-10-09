@@ -12,6 +12,11 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'zurb-foundation'
 gem 'pry'
 
+group :production do
+  gem 'rails_12factor'
+end
+
+
 group :test, :development do
   gem 'rspec-rails'
 end

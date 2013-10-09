@@ -1,7 +1,7 @@
 <% title "#{@tutorial.description} | Coding Tutorials" %>
 
 <div class='large-8 columns'>
-  <h2><%= link_to @tutorial.description, @tutorial.link %></h2>
+  <h3><%= link_to @tutorial.description, @tutorial.link %></h3>
 
   <% if current_user == nil %>
     Please <%= link_to("Log in", login_path) %> to comment.
