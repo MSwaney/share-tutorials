@@ -14,7 +14,7 @@
   	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+  	<title><%= content_for?(:title) ? yield(:title) : "Coding Tutorials" %></title>
 
   	<%= stylesheet_link_tag  "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
@@ -52,12 +52,16 @@
     </nav>
 
     <% if flash[:alert] %>
-      <div class='alert-box'> <%= flash[:alert] %> </div>
+      <div class='alert-box alert'> <%= flash[:alert] %> </div>
+    <% elsif flash[:notice] %>
+      <div class='alert-box alert'> <%= flash[:notice] %> </div>
     <% end %>
 
+
     <div class="row">
-     <%= yield %>
+      <%= yield %>
     </div>
+
   
     <%= javascript_include_tag "application" %>
   </body>

@@ -17,7 +17,7 @@
     <%= f.label 'URL' %>
     <%= f.text_field :link %>
     <%= f.label 'Category' %>
-    <%= f.select(:category_id, Category.all.collect {|category| [ category.name, category.id ] }) %>
+    <%= f.select(:category_id, Category.all.collect {|category| [ category.name, category.id ] }, {:include_blank => true, :default => nil} ) %>
     <%= f.submit 'Submit Tutorial' %>
   <% end %>
 </div>  

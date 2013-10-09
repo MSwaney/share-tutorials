@@ -10,10 +10,17 @@ class TutorialsController < ApplicationController
     @tutorial = Tutorial.new
   end
 
+  def show
+    @tutorial = Tutorial.find(params[:id])
+    @comment = Comment.new
+    @comments = Comment.where(:tutorial_id => params[:id]).sort_order
+  end
+
+
   def create
     @tutorial = current_user.tutorials.new(tutorial_params)
     if @tutorial.save
-      flash[:notice] = "Good job"
+      flash[:notice] = "Your tutorial has been added."
       redirect_to '/'
     else
       render 'new'

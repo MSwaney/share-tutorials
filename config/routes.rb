@@ -10,4 +10,5 @@ Tic::Application.routes.draw do
   resources :users
   resources :likes
   resources :categories
+  resources :comments
 end

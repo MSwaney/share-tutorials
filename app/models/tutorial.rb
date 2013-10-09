@@ -2,7 +2,7 @@ class Tutorial < ActiveRecord::Base
   validates :link, presence: true
   validates :description, presence: true, length: {maximum: 50}
   has_many :likes
-  # has_many :comments, as: :commentable
+  has_many :comments
   belongs_to :category
   belongs_to :user
 

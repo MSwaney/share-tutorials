@@ -76,12 +76,11 @@ p {
 }
 
 .like {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 12px;
+  margin-bottom: 0px;
   font-size: 12px;
   font-weight: bold;
   color: #858585;
-  display: block;
 }
 
 .like-count {
@@ -92,9 +91,47 @@ p {
   font-weight: bold;
 }
 
+.sidebar {
+  background-color: #B8B8B8;  
+  margin-top: 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+}
 
+.credit {
+  font-size: 13px;
+  color: #7A2929;
+}
 
+.brought {
+  font-weight: bold;
+}
 
+.submit-button {
+  height: 35px;
+  width: 200px;
+  margin-bottom: 10px;
+}
 
+.submit {
+  font-size: 17px;
+}
+
+.comment-count {
+  /*margin-left: 60px;*/
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #858585;
+}
+.info {
+  margin-top: 5px;
+  display: block;
+}
+.info a {
+  color: #858585;
+}
 
 

@@ -1,26 +1,39 @@
 
-  <div class="large-3 columns left">
-    <h6>Share the Knowledge</h6>
-    <p>Why not share your favorite tutorials with the class?</p>
-    <p><%= link_to "Submit A Tutorial!", new_tutorial_path, class: "button small secondary radius" %></p>
+<% title "#{@category.name} Tutorials" %>
+
+<div class="large-3 large-offest-1 columns right sidebar">
+   <h6>About This App</h6>
+  <p>A central place for students of Epidocuds to share and comment on programming tutorials!</p>
+  <hr>
+  <p class='credit'><span class='brought'>Brought to you by:</span> <br> Matt Swaney & Mac Eisenberg</p>
+  <hr>
+
+  <h6>Share the Knowledge</h6>
+  <p>Why not share your favorite tutorials with the class?</p>
+  <p class='submit'><%= link_to "Submit A Tutorial!", new_tutorial_path, class: "submit-button button small success radius" %></p>
+
+ 
 </div>
 
 <div class="large-9 columns left">
-  <h5>Latest <%= @category.name %> Tutorials</h5>
-  <% @category.tutorials.each do |tutorial| %>
-    <li>
-    <span class='post'><a href=<%= tutorial.link %> target="_blank"><%= tutorial.description %></a></span> <%= tutorial.likes.count %>
-      <% if current_user %>
-        <% if tutorial.liked_by(current_user) %>
-          <p class='like'>Liked</p>
-        <% else %>
-          <p class="like"><%= button_to("Like", :action => "create", :controller => "likes", like: { :tutorial_id => tutorial.id } ) %></p> 
-        <% end %>
+
+<h5>Latest <%= @category.name %> Tutorials</h5>
+
+<% @category.tutorials.each do |tutorial| %>
+  <li class='post'>
+    <span class='like-count'><%= pluralize(tutorial.likes.count, 'like')%></span>  <span class='post-name'><a href=<%= tutorial.link %> target="_blank"><%= tutorial.description %></a></span>
+   
+    <span class="poster">Posted by <%= tutorial.user.name %> <%= time_ago_in_words(tutorial.created_at)  %> ago</span>
+    <% if current_user %>
+      <% if tutorial.liked_by(current_user) %>
+        <span class='like'>Liked</span>
       <% else %>
-        <p class="like"><%= link_to("Like", login_path, notice: "You must be logged in to 'Like'" ) %></p>  
+        <span class='like'><%= link_to("Like It!", likes_path(like: { :tutorial_id => tutorial.id }), :method => 'post') %> </span>
       <% end %>
-      <p class="poster">Posted by <%= tutorial.user.name %> <%= time_ago_in_words(tutorial.created_at)  %>
-      <hr>
-    </li>
-  <% end %>
+    <% else %>
+      <span class='like'><%= link_to("Like It!", login_path, notice: "You must be logged in to 'Like'" ) %></span>  
+    <% end %>
+    <hr>
+  </li>
+<% end %>
 </div>
