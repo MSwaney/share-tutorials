@@ -18,6 +18,6 @@
     <%= f.text_field :link %>
     <%= f.label 'Category' %>
     <%= f.select(:category_id, Category.all.collect {|category| [ category.name, category.id ] }, {:include_blank => "Choose A Category", :default => nil} ) %>
-    <%= f.submit 'Submit Tutorial' %>
+    <%= f.submit 'Submit Tutorial', class: 'button small alert radius' %>
   <% end %>
 </div>  

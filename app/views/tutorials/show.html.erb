@@ -4,14 +4,14 @@
   <h3><%= link_to @tutorial.description, @tutorial.link %></h3>
 
   <% if current_user == nil %>
-    Please <%= link_to("Log in", login_path) %> to comment.
+    <p>Please <%= link_to("Log in", login_path) %> to leave a comment.</p>
   <% else %>
     <%= form_for @comment do |f| %>
       <%= f.label :comment %>
       <%= f.text_field :content %>
       <%= f.hidden_field :tutorial_id, :value => @tutorial.id %>
       <%= f.hidden_field :user_id, :value => current_user.id %>
-      <%= f.submit "Add Comment" %>
+      <%= f.submit "Add Comment", class: 'button small alert radius' %>
     <% end %>
   <% end %>
 
