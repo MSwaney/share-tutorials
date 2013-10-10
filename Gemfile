@@ -10,7 +10,6 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'zurb-foundation'
-gem 'pry'
 
 group :production do
   gem 'rails_12factor'
@@ -19,8 +18,13 @@ end
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'pry'
 end
 
 group :test do
   gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'selenium'
+  gem 'launchy'
 end

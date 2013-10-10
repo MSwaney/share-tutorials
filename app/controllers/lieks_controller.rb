@@ -1,2 +1,0 @@
-class LieksController < ApplicationController
-end

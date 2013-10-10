@@ -14,9 +14,9 @@
     <% end %>
     <%= f.label :description %>
     <%= f.text_field :description %>
-    <%= f.label 'Link to Tutorial' %>
+    <%= f.label :link %>
     <%= f.text_field :link %>
-    <%= f.label 'Category' %>
+    <%= f.label :category_id %>
     <%= f.select(:category_id, Category.all.collect {|category| [ category.name, category.id ] }, {:include_blank => "Choose A Category", :default => nil} ) %>
     <%= f.submit 'Submit Tutorial', class: 'button small alert radius' %>
   <% end %>

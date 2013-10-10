@@ -7,6 +7,8 @@ class Tutorial < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
 
+  
+
   before_save do
     if !self.link.include? "//"
       self.link = 'http://' + self.link
