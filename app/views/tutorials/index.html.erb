@@ -16,7 +16,7 @@
   <li class='post'>
     <span class='like-count'><%= pluralize(tutorial.likes.count, 'like')%></span>  <span class='post-name'><a href=<%= tutorial.link %> target="_blank"><%= tutorial.description %></a></span>
    
-    <span class="poster">Posted by <%= tutorial.user.name %> <%= time_ago_in_words(tutorial.created_at)  %> ago, in <%= link_to tutorial.category.name, category_path(tutorial.category.slug) %></span>
+    <span class="poster"><span class="posted-by">Posted by </span><%= tutorial.user.name %> <%= time_ago_in_words(tutorial.created_at)  %> ago, in <%= link_to tutorial.category.name, category_path(tutorial.category.slug) %></span>
     <div class='info'>
       <% if current_user %>
         

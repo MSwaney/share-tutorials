@@ -6,14 +6,8 @@ class Tutorial < ActiveRecord::Base
   has_many :comments
   belongs_to :category
   belongs_to :user
-
-  
-
-  before_save do
-    if !self.link.include? "//"
-      self.link = 'http://' + self.link
-    end
-  end
+  validates_format_of :link, :with => /\./
+  before_save :verify_http
 
   def ordered_comments
      self.comments.order("created_at DESC")
@@ -25,5 +19,13 @@ class Tutorial < ActiveRecord::Base
      
   def self.sort_order
     Tutorial.all.order('created_at DESC')
-  end 
+  end
+
+private
+
+  def verify_http
+    if !self.link.include? "//"
+      self.link = 'http://' + self.link
+    end
+  end
 end
