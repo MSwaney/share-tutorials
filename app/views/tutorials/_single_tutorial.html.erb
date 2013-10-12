@@ -1,0 +1,32 @@
+<li class='post'>
+  <span class='like-count'>
+    <%= pluralize(tutorial.likes.count, 'like') %>
+  </span>  
+  <span class='post-name'>
+    <%= link_to tutorial.description, tutorial_path(tutorial) %>
+  </span>
+ 
+  <span class="poster">
+    <span class="posted-by">Posted by </span>
+    <%= tutorial.user.name %> <%= time_ago_in_words(tutorial.created_at) %> ago, in <%= link_to tutorial.category.name, category_path(tutorial.category.slug) %>
+  </span>
+  <div class='info'>
+    <% if current_user %>
+      
+      <% if tutorial.liked_by(current_user) %>
+        <span class='like'>Liked</span>
+      
+      <% else %>
+        <span class='like'><%= link_to("Like It!", likes_path(like: { :tutorial_id => tutorial.id }), :method => 'post') %></span>
+      <% end %>
+    
+    <% else %>
+      <span class='like'><%= link_to("Like It!", login_path, notice: "You must be logged in to 'Like'" ) %></span>  
+    <% end %>
+    
+    <span class='comment-count'>• 
+      <%= comment_link_helper(tutorial) %>
+    </span>  
+  </div>
+  <hr>
+</li>

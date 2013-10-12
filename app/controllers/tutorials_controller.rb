@@ -3,7 +3,7 @@ class TutorialsController < ApplicationController
   before_action :authorize, only: [:new, :create]
 
   def index
-    @tutorials = Tutorial.sort_order
+    @tutorials = Tutorial.sort_order.page(params[:page])
   end
 
   def new
@@ -21,9 +21,9 @@ class TutorialsController < ApplicationController
     @tutorial = current_user.tutorials.new(tutorial_params)
     if @tutorial.save
       flash[:notice] = "Your tutorial has been added."
-      redirect_to '/'
+      render 'create.js'
     else
-      render 'new'
+      render 'new.js'
     end
   end
 
