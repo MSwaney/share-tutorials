@@ -4,6 +4,7 @@ Share Your Tutorials
 A website for aspiring developers to share and comment on the latest programming tutorials.
 
 This was my first Rails app at Epicodus.
+I built this along with Mac Eisenberg
 
 Buit with Rails 4.0. Testing with RSpec and Capybara.
 
