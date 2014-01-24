@@ -1,5 +1,12 @@
-== README
+Share Your Tutorials
+====================
 
-This is a simple website built by myself and Mac Eisenberg. It was created so that students at Epicodus would be able to share tutorials, how-to's and interesting articles with each other.
+A website for aspiring developers to share and comment on the latest programming tutorials.
 
-It was written using Ruby 2.0 and Rails 4.0.
+This was my first Rails app at Epicodus.
+
+Buit with Rails 4.0. Testing with RSpec and Capybara.
+
+Live Demo
+=========
+[Share Your Tutorials](http://coding-tutorials.herokuapp.com)
